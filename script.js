@@ -6,45 +6,55 @@ navToggle.addEventListener('click', () => {
   navMenu.classList.toggle('active');
 });
 
-// Дані ігор — тепер з реальними назвами та описами
+// Дані ігор — тепер з унікальним ID
 const games = [
   {
+    id: 1,
     title: "Фінансовий лабіринт: Шлях до мрії",
     desc: "Гравець рухається лабіринтом, приймає рішення, уникає пасток — і головна мета — досягти фінансової мрії."
   },
   {
+    id: 2,
     title: "Бюджет-квест: Хто витрачає?",
     desc: "Гравці аналізують витрати, складають бюджет і приймають рішення — гра зроблена у форматі квесту з командними викликами."
   },
   {
+    id: 3,
     title: "Скарбничка майбутнього",
     desc: "Гравці планують своє майбутнє, заощаджують, керують бюджетом — ігровий образ 'скарбнички' добре відповідає темі."
   },
   {
+    id: 4,
     title: "Борговий капкан: Борг чи безпека?",
     desc: "Акцент на фінансовій безпеці, аналізі боргів і відповідальних рішень. 'Капкан' — сильний образ для попередження."
   },
   {
+    id: 5,
     title: "Інвестиційний квест: Гроші працюють за тебе!",
     desc: "Гравці вчаться інвестувати, диверсифікувати активи — ідея про те, що гроші можуть 'працювати', ключова."
   },
   {
+    id: 6,
     title: "Цифрова безпека: Фінанси в мережі",
     desc: "Тема — захист даних, фішинг, онлайн-ризики. Назва чітко вказує на актуальну проблему."
   },
   {
+    id: 7,
     title: "Фінансові спокуси: Що купувати?",
     desc: "Гравці стикаються з маркетинговими маніпуляціями, емоційними покупками — 'спокуси' — ідеальний образ."
   },
   {
+    id: 8,
     title: "Сімейний бюджет: Хто витрачає?",
     desc: "Гравці аналізують бюджет сімей, розподіляють доходи — назва відображає командний і реалістичний підхід."
   },
   {
+    id: 9,
     title: "Майбутнє за професією",
     desc: "Гравці обирають професію, аналізують дохід, ризики, планують бюджет — назва вказує на майбутнє й професійне самовизначення."
   },
   {
+    id: 10,
     title: "Фінансовий квест: Від бюджету до свободи",
     desc: "Це фінальна гра, що узагальнює всі навички. 'Фінансова свобода' — найвища мета фінансової грамотності."
   }
@@ -53,20 +63,25 @@ const games = [
 // Генеруємо карточки ігор
 const gamesGrid = document.getElementById('gamesGrid');
 
-games.forEach((game, index) => {
-  // Якщо хочеш використовувати локальні зображення — створи папку `images/` і додай файли як game1.jpg, game2.jpg тощо
-  const imgSrc = `images/game${index + 1}.png`; // шлях до локальних зображень
-  const imgAlt = game.title;
+games.forEach(game => {
+  // Автоматичне посилання: games/game1.html, game2.html тощо
+  const gamePageUrl = `games/game${game.id}.html`;
+
+  // Шлях до зображення (можна змінити на свій формат)
+  const imgSrc = `images/game${game.id}.jpg`; // або game1-cover.jpg, якщо так назвав
 
   const card = document.createElement('div');
   card.className = 'game-card';
 
   card.innerHTML = `
-    <img src="${imgSrc}" alt="${imgAlt}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x180/5e60ff/ffffff?text=${encodeURIComponent(game.title)}';">
-    <div class="game-card-content">
-      <h3>${game.title}</h3>
-      <p>${game.desc}</p>
-    </div>
+    <a href="${gamePageUrl}" class="game-link">
+      <img src="${imgSrc}" alt="${game.title}" onerror="this.onerror=null; this.src='https://via.placeholder.com/300x180/5e60ff/ffffff?text=${encodeURIComponent(game.title)}';">
+      <div class="game-card-content">
+        <h3>${game.title}</h3>
+        <p>${game.desc}</p>
+        <span class="btn">Дізнатися більше</span>
+      </div>
+    </a>
   `;
 
   gamesGrid.appendChild(card);
