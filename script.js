@@ -68,7 +68,7 @@ games.forEach(game => {
   const gamePageUrl = `games/game${game.id}.html`;
 
   // Шлях до зображення (можна змінити на свій формат)
-  const imgSrc = `images/game${game.id}.jpg`; // або game1-cover.jpg, якщо так назвав
+  const imgSrc = `images/game${game.id}.png`; // або game1-cover.jpg, якщо так назвав
 
   const card = document.createElement('div');
   card.className = 'game-card';
