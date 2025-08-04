@@ -55,7 +55,7 @@ const gamesGrid = document.getElementById('gamesGrid');
 
 games.forEach((game, index) => {
   // Якщо хочеш використовувати локальні зображення — створи папку `images/` і додай файли як game1.jpg, game2.jpg тощо
-  const imgSrc = `images/game${index + 1}.jpg`; // шлях до локальних зображень
+  const imgSrc = `images/game${index + 1}.png`; // шлях до локальних зображень
   const imgAlt = game.title;
 
   const card = document.createElement('div');
